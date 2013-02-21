@@ -1,0 +1,13 @@
+[DEFAULT]
+rootwrap_config=/etc/cinder/rootwrap.conf
+#sql_connection = mysql://cinderUser:cinderPass@<DB_IP>/cinder
+sql_connection = mysql://cinder:%MYSQL_CINDER_PASS%@%MYSQL_HOST%/cinder
+api_paste_confg = /etc/cinder/api-paste.ini
+#iscsi_helper=ietadm
+iscsi_helper=tgtadm
+volume_name_template = volume-%s
+volume_group = cinder-volumes
+verbose = True
+auth_strategy = keystone
+#osapi_volume_listen_port=5900
+iscsi_target_prefix=iqn.2012-01.centrin:
