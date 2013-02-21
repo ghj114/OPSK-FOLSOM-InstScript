@@ -6,29 +6,32 @@
 
 # hardWare
 #      name           nic                                   descri
-#     node1          eth0:10.1.247.62                   controller node
-#                    eth1:172.16.247.62
-#     node2          eth0:10.1.247.58(Not required)     compute node
-#                    eth1:172.16.247.58
-#     node3          eth0:10.1.247.60(Not required)     compute node
-#                    eth1:172.16.247.60
+#     node1          eth0:10.1.199.53                  controller node
+#                    eth1:
+#                    eth2:192.168.200.53
+#                    eth3:192.168.201.53
+#     node2          eth0:10.1.199.60(Not required)     compute node
+#                    eth1:
+#                    eth1:192.168.200.60
+#                    eth1:192.168.201.60
 
 
 #  network_type       device                                           network                         describe
 #----------------------------------------------------------------------------------------------------------------------------------
-#     vlan             eth0(public/external network)          network1:10.1.247.62/24
+#     vlan             eth0(public/external network)          network1:10.1.199.120/29        The Floating IPS
 #
-#                      eth1(private/internal networks)        network2:172.16.247.62/24       The OpenStack management network:is used for the communication \
+#                      eth1 (private/internal networks)       network2:192.168.199.0/24       The service network: is used for the instance fixed IPs and to \
+#                                                                                                 create all the VLANs/subnets for the tenants.It is completely\#                                                                                                       managed by OpenStack.
+#                      eth2                                   network3:192.168.200.0/24       The OpenStack management network:is used for the communication \
 #                                                                                                 between the OpenStack components,the MySQL DB server,
 #                                                                                                 and the RabbitMQ messaging server.
-#                                                                                             The storage network (volume network): is used for the iSCSI \
+#                      eth3                                   network4:192.168.201.0/24       The storage network (volume network): is used for the iSCSI \
 #                                                                                                 volume traffic between the storage node (volume node) 
-#                      eth1                                   network3:10.0.0.0/8             The service network: is used for the instance fixed IPs and to \
-#                                                                                                 create all the VLANs/subnets for the tenants.It is completely\#                                                                                                 managed by OpenStack.
-#  flatdhcp            eth0                                   network1:10.1.199.7/24          The public network: floating ip
+#
+#  flatdhcp            eth0                                   network1:10.1.199.120/29        The public network: floating ip
 #                      eth1                                   network2:192.168.199.0/24       The private network: fixed ip
-#                      eth2                                   network3:192.168.200.7/24       The management network: between the openstack components,mysql,rabbitmq
-#                      eth3                                   network4:192.168.201.7/24       The storage network: is used for the ISCSI volume traffic
+#                      eth2                                   network3:192.168.200.0/24       The management network: between the openstack components,mysql,rabbitmq
+#                      eth3                                   network4:192.168.201.0/24       The storage network: is used for the ISCSI volume traffic
 #
 
 # MYPUB_IP="10.1.247.62"
