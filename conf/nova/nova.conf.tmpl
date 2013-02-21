@@ -97,7 +97,7 @@ firewall_driver=nova.virt.libvirt.firewall.IptablesFirewallDriver
 
 ###### NOVNC CONSOLE
 novnc_enabled=true
-novncproxy_base_url= http://%CONTROLLER_IP%:6080/vnc_auto.html
+novncproxy_base_url= http://%CONTROLLER_IP_PUB%:6080/vnc_auto.html
 vncserver_proxyclient_address=%COMPUTE_IP%
 #vncserver_listen=%COMPUTE_IP%
 vncserver_listen=0.0.0.0
