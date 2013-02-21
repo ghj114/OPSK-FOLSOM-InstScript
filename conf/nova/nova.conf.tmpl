@@ -20,6 +20,9 @@ sql_connection=mysql://nova:%MYSQL_NOVA_PASS%@%MYSQL_HOST%/nova
 libvirt_type=kvm
 connection_type=libvirt
 instance_name_template=instance-%08x
+#instances_path = /opt/data/nova/instances
+state_path=/var/lib/nova
+lock_path=/var/lock/nova
 api_paste_config=/etc/nova/api-paste.ini
 allow_resize_to_same_host=True
 start_guests_on_host_boot=false
@@ -102,8 +105,6 @@ vncserver_listen=0.0.0.0
 
 ####### Mis
 logdir=/var/log/nova
-state_path=/var/lib/nova
-lock_path=/var/lock/nova
 root_helper=sudo
 rootwrap_config=/etc/nova/rootwrap.conf
 #use_deprecated_auth=false
