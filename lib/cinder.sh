@@ -23,7 +23,7 @@ echo "GRANT ALL ON cinder.* TO 'cinder'@'%' IDENTIFIED BY '$MYSQL_SERVICE_PASS';
 sed -e "s,%KEYSTONE_IP%,$KEYSTONE_IP,g" -e "s,%SERVICE_TENANT_NAME%,$SERVICE_TENANT_NAME,g" -e "s,%SERVICE_PASSWORD%,$SERVICE_PASSWORD,g" ./conf/cinder/api-paste.ini.tmpl > ./conf/cinder/api-paste.ini
 
 # cinder.conf.tmpl
-sed -e "s,%MYSQL_HOST%,$MYSQL_HOST,g" -e "s,%MYSQL_CINDER_PASS%,$MYSQL_SERVICE_PASS,g" ./conf/cinder/cinder.conf.tmpl > ./conf/cinder/cinder.conf
+sed -e "s,%MYSQL_HOST%,$MYSQL_HOST,g" -e "s,%MYSQL_CINDER_PASS%,$MYSQL_SERVICE_PASS,g" -e "s,%RABBITMQ_IP%,$RABBITMQ_IP,g"  ./conf/cinder/cinder.conf.tmpl > ./conf/cinder/cinder.conf
 
 cp ./conf/cinder/api-paste.ini ./conf/cinder/cinder.conf /etc/cinder/
 rm -f ./conf/cinder/api-paste.ini ./conf/cinder/cinder.conf 
