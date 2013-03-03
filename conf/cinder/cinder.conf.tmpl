@@ -21,6 +21,7 @@ root_helper = sudo /usr/bin/cinder-rootwrap /etc/cinder/rootwrap.conf
 api_paste_config = /etc/cinder/api-paste.ini
 
 sql_connection = mysql://cinder:%MYSQL_CINDER_PASS%@%MYSQL_HOST%/cinder
+policy_file = /etc/cinder/policy.json
 #sql_connection = mysql://root:myroot@192.168.200.7/cinder?charset=utf8
 ~                                  
 #logging_exception_prefix = %(color)s%(asctime)s.%(msecs)03d TRACE %(name)s ^[[01;35m%(instance)s^[[00m
