@@ -6,6 +6,7 @@ source settings
 #apt-get update
 #apt-get upgrade
 apt-get install -y python-mysqldb mysql-client curl
+apt-get install -y python-prettytable
 apt-get install -y python-keystone python-keystoneclient
 apt-get install -y glance glance-api glance-common glance-registry python-glance python-glanceclient
 rm -f /var/lib/glance/glance.sqlite

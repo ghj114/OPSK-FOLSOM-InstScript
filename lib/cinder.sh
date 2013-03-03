@@ -18,6 +18,9 @@ service open-iscsi start
 mysql -h$MYSQL_HOST -uroot -p$MYSQL_ROOT_PASS -e 'DROP DATABASE IF EXISTS cinder;'
 mysql -h$MYSQL_HOST -uroot -p$MYSQL_ROOT_PASS -e 'CREATE DATABASE cinder;'
 echo "GRANT ALL ON cinder.* TO 'cinder'@'%' IDENTIFIED BY '$MYSQL_SERVICE_PASS'; FLUSH PRIVILEGES;" | mysql -h$MYSQL_HOST -uroot -p$MYSQL_ROOT_PASS
+#mysql -h192.168.1.100 -uroot -proot -e 'DROP DATABASE IF EXISTS cinder;'
+#mysql -h192.168.1.100 -uroot -proot -e 'CREATE DATABASE cinder;'
+#echo "GRANT ALL ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'service'; FLUSH PRIVILEGES;" | mysql -h192.168.1.100 -uroot -proot
 
 # cinder-api-paste.init.tmpl
 sed -e "s,%KEYSTONE_IP%,$KEYSTONE_IP,g" -e "s,%SERVICE_TENANT_NAME%,$SERVICE_TENANT_NAME,g" -e "s,%SERVICE_PASSWORD%,$SERVICE_PASSWORD,g" ./conf/cinder/api-paste.ini.tmpl > ./conf/cinder/api-paste.ini
@@ -36,6 +39,12 @@ cinder-manage db sync
 # create pyshical volume and volume group
 #pvcreate ${CINDER_VOLUME} # CINDER_VOLUME = '/dev/sda6'
 #vgcreate cinder-volumes ${CINDER_VOLUME}
+
+# using file instead
+# dd if=/dev/zero of=/opt/cinder-volumes.img bs=1M seek=5120 count=0
+# losetup -f /opt/cinder-volumes.img
+# losetup -a
+# vgcreate cinder-volumes /dev/loop0
 
 # restart processes
 service cinder-volume restart
