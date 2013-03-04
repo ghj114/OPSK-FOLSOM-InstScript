@@ -1,7 +1,5 @@
 [DEFAULT]
 
-# ====LOGS/STATE====
-verbose=True
 
 # ====SCHEDULER====
 scheduler_driver=nova.scheduler.multi.MultiScheduler
@@ -52,11 +50,11 @@ volume_api_class=nova.volume.cinder.API
 #ec2_url=http://10.42.0.6:8773/services/Cloud
 #keystone_ec2_url=http://10.42.0.6:5000/v2.0/ec2tokens
 
-###### RABBITMQ
+# ====RABBITMQ====
 rabbit_host=%RABBITMQ_IP%
 #rabbit_password=yourpassword
 
-###### GLANCE
+# ====GLANCE====
 image_service=nova.image.glance.GlanceImageService
 glance_api_servers=%GLANCE_IP%:9292
 
@@ -87,15 +85,24 @@ my_ip=%COMPUTE_IP%
 #flat_network_dhcp_start=192.168.22.33
 #flat_injected=False
 
-###### NOVNC CONSOLE
+# ====NOVNC CONSOLE====
 novnc_enabled=true
 novncproxy_base_url= http://%CONTROLLER_IP_PUB%:6080/vnc_auto.html
 vncserver_proxyclient_address=%COMPUTE_IP%
 #vncserver_listen=%COMPUTE_IP%
 vncserver_listen=0.0.0.0
 
-####### Mis
+# ====LOGS/STATE====
+verbose=True
 logdir=/var/log/nova
+#logging_exception_prefix = %(color)s%(asctime)s.%(msecs)03d TRACE %(name)s ^[[01;35m%(instance)s^[[00m
+#logging_debug_format_suffix = ^[[00;33mfrom (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d^[[00m
+#logging_default_format_string = %(asctime)s.%(msecs)03d %(color)s%(levelname)s %(name)s [^[[00;36m-%(color)s] ^[[01;35m%(instance)s%(color)s%(message)s^[[00m
+#logging_context_format_string = %(asctime)s.%(msecs)03d %(color)s%(levelname)s %(name)s [^[[01;36m%(request_id)s ^[[00;36m%(user_id)s %(project_id)s%(color)s] ^[[01;35m%(instance)s%(color)s%(message)s^[[00m
+
+
+# ====Mis====
+#root_helper=sudo /root/openstack/nova-2012.2.3/.venv/bin/nova-rootwrap /root/openstack/nova-2012.2.3/etc/nova/rootwrap.conf
 root_helper=sudo
 rootwrap_config=/etc/nova/rootwrap.conf
 #use_deprecated_auth=false
