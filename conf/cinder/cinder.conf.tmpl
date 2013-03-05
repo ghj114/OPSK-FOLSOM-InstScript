@@ -13,7 +13,7 @@ rabbit_host = %RABBITMQ_IP%
 rpc_backend = cinder.openstack.common.rpc.impl_kombu
 
 state_path = /var/lib/cinder
-osapi_volume_extension = cinder.api.contrib.standard_extensions
+osapi_volume_extension = cinder.api.openstack.volume.contrib.standard_extensions
 
 root_helper = sudo /usr/bin/cinder-rootwrap /etc/cinder/rootwrap.conf
 #rootwrap_config=/etc/cinder/rootwrap.conf
