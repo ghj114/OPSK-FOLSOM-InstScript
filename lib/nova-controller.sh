@@ -13,8 +13,8 @@ service ntp restart
 
 #nova-compute-kvm vlan bridge-utils nova-network 
 apt-get install -y python-mysqldb mysql-client curl
-apt-get install -y nova-api nova-scheduler nova-common nova-cert nova-consoleauth nova-console websockify
-apt-get install -y novnc nova-novncproxy
+apt-get install -y nova-api nova-scheduler nova-common nova-cert nova-console 
+apt-get install -y novnc nova-novncproxy nova-consoleauth websockify
 #apt-get install -y nova-volume
 
 if [ $MULTI_HOST = 'False' ]; then apt-get install -y nova-network;/etc/init.d/networking restart; fi
